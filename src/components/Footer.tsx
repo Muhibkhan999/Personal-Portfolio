@@ -13,26 +13,20 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <h3 className="text-xl font-bold mb-6 text-white tracking-tight">REST RECOVERY</h3>
+            <h3 className="text-xl font-bold mb-6 text-white tracking-tight">MUHIB KHAN</h3>
             <p className="text-white/70 mb-6">
-              Leading the recovery revolution with cutting-edge technology and proven methodologies.
-              Join our community of wellness enthusiasts and recovery professionals.
+              Full-stack MERN developer passionate about building scalable web applications. 
+              Let's create something amazing together.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/restrecoverywellness/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="Facebook">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="GitHub">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.instagram.com/restrecoverywellness/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-              <a href="https://www.instagram.com/restrecoverywellness/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="https://www.instagram.com/restrecoverywellness/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="LinkedIn">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
-              <a href="https://www.instagram.com/restrecoverywellness/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="YouTube">
-                <Youtube size={20} />
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" aria-label="Twitter">
+                <Twitter size={20} />
               </a>
             </div>
           </div>
@@ -49,12 +43,10 @@ const Footer = () => {
                   Owners Only
                 </button>
               </li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-opacity">About Us</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-opacity">License Opportunities</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-opacity">Products</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-opacity">Locations</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-opacity">Contact</a></li>
-              <li><a href="#" className="text-white/70 hover:text-white transition-opacity">Press</a></li>
+              <li><Link to="/" className="text-white/70 hover:text-white transition-opacity">Home</Link></li>
+              <li><Link to="/licensee" className="text-white/70 hover:text-white transition-opacity">Skills & Experience</Link></li>
+              <li><Link to="/shop" className="text-white/70 hover:text-white transition-opacity">Projects</Link></li>
+              <li><a href="#contact" className="text-white/70 hover:text-white transition-opacity">Contact</a></li>
             </ul>
           </div>
           
@@ -90,7 +82,7 @@ const Footer = () => {
         
         <div className="border-t border-white/10 mt-12 pt-8 text-center">
           <p className="text-white/70">
-            &copy; {new Date().getFullYear()} REST RECOVERY Wellness. All rights reserved.
+            &copy; {new Date().getFullYear()} Muhammad Muhib Khan. All rights reserved.
           </p>
         </div>
       </div>

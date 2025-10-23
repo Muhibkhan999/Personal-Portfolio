@@ -187,10 +187,10 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/licensee" className="font-medium text-white/80 hover:text-white transition-colors">
-            Licensee
+            Skills & Experience
           </Link>
           <Link to="/shop" className="font-medium text-white/80 hover:text-white transition-colors">
-            Shop
+            Projects
           </Link>
           
           {/* Locations Dropdown */}
@@ -272,13 +272,13 @@ const Navbar = () => {
               to="/licensee"
               className="font-medium text-white/90 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg px-4 py-3 transition-colors text-lg block"
             >
-              Licensee
+              Skills & Experience
             </Link>
             <Link 
               to="/shop"
               className="font-medium text-white/90 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg px-4 py-3 transition-colors text-lg block"
             >
-              Shop
+              Projects
             </Link>
             {/* Mobile Locations */}
             <div className="bg-white/5 rounded-lg px-4 py-3">
