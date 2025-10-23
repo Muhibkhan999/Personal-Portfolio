@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Lock, FileText, Download, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const OWNERS_PASSWORD = "Restrecovery";
+const OWNERS_PASSWORD = "muhibkhan2410";
 
 const Owners = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

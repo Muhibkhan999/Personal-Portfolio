@@ -14,34 +14,35 @@ const StorySection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <span className="inline-block px-4 py-2 bg-white/10 text-white rounded-full font-medium">
-                Our Story
+                About Me
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-                Pioneering the Future of
+                Building the Future of
                 <span className="block bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
-                  Recovery Wellness
+                  Web Development
                 </span>
               </h2>
               <p className="text-xl text-white/80 leading-relaxed">
-                At Rest Recovery, we believe that true wellness begins with intentional restoration. 
-                Our boutique wellness facilities are designed to help you recover, heal, and optimize 
-                your body and mind using science-backed, high-performance therapies.
+                I'm Muhammad Muhib Khan, a passionate full-stack developer specializing in the MERN stack. 
+                I create scalable, efficient, and user-friendly web applications that solve real-world problems 
+                and deliver exceptional digital experiences.
               </p>
             </div>
 
             <div className="space-y-6">
               <p className="text-lg text-white/70 leading-relaxed">
-                We combine the latest in recovery technology—like cold plunges, infrared saunas, 
-                hyperbaric chambers, float therapy, red light therapy, compression, PEMF, and salt 
-                rooms—into a seamless, rejuvenating experience.
+                My expertise spans across <strong className="text-white">MongoDB</strong> for robust database solutions, 
+                <strong className="text-white"> Express.js</strong> for powerful backend APIs, 
+                <strong className="text-white"> React</strong> for dynamic and responsive user interfaces, and 
+                <strong className="text-white"> Node.js</strong> for high-performance server-side applications.
               </p>
               <p className="text-lg text-white/70 leading-relaxed">
-                Founded on the idea that recovery should be accessible, effective, and luxurious, 
-                each of our locations is built with care, outfitted with industry-leading equipment, 
-                and supported by knowledgeable staff who guide you through your wellness journey.
+                With a focus on clean code, best practices, and modern development workflows, I transform 
+                ideas into fully functional applications. From concept to deployment, I handle the entire 
+                development lifecycle with precision and attention to detail.
               </p>
               <blockquote className="text-xl font-medium text-white italic border-l-4 border-white/20 pl-6">
-                "Welcome to the future of feeling good."
+                "Code is poetry written in logic."
               </blockquote>
             </div>
 
@@ -59,24 +60,45 @@ const StorySection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/licensee">
+              <a href="#contact">
                 <Button className="bg-white text-black hover:bg-white/90 px-8 py-4 rounded-full text-lg flex items-center gap-3 w-full sm:w-auto">
-                  Explore Licensee Opportunities
+                  Let's Work Together
                   <ArrowRight className="w-5 h-5" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
 
           {/* Image */}
-          <div className="relative">
+            <div className="relative">
             <div className="absolute -inset-8 bg-gradient-to-r from-white/5 to-white/10 rounded-3xl blur-2xl" />
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-              <img 
-                alt="REST RECOVERY Wellness Center" 
-                className="w-full h-auto transform hover:scale-105 transition-transform duration-700" 
-                src="/lovable-uploads/b75b628b-2cba-4748-8f80-792a5ae8ee1d.png" 
-              />
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gradient-to-br from-zinc-900 to-black p-12">
+              <div className="text-center space-y-8">
+                <div className="text-8xl font-bold text-yellow-400">{ }</div>
+                <h3 className="text-3xl font-bold text-white">MERN Stack</h3>
+                <div className="grid grid-cols-2 gap-6 text-left">
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="text-yellow-400 font-bold text-xl mb-2">M</div>
+                    <div className="text-white font-semibold">MongoDB</div>
+                    <div className="text-white/60 text-sm">NoSQL Database</div>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="text-yellow-400 font-bold text-xl mb-2">E</div>
+                    <div className="text-white font-semibold">Express.js</div>
+                    <div className="text-white/60 text-sm">Backend Framework</div>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="text-yellow-400 font-bold text-xl mb-2">R</div>
+                    <div className="text-white font-semibold">React</div>
+                    <div className="text-white/60 text-sm">Frontend Library</div>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="text-yellow-400 font-bold text-xl mb-2">N</div>
+                    <div className="text-white font-semibold">Node.js</div>
+                    <div className="text-white/60 text-sm">Runtime Environment</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -88,23 +110,23 @@ const StorySection = () => {
 const stats = [
   {
     icon: Globe,
-    number: "25+",
-    label: "Locations"
+    number: "20+",
+    label: "Projects"
   },
   {
     icon: Users,
-    number: "10K+",
-    label: "Members"
+    number: "3+",
+    label: "Years Experience"
   },
   {
     icon: Award,
-    number: "98%",
+    number: "100%",
     label: "Satisfaction"
   },
   {
     icon: Star,
-    number: "5.0",
-    label: "Rating"
+    number: "MERN",
+    label: "Specialist"
   }
 ];
 
