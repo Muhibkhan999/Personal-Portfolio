@@ -174,8 +174,8 @@ const Navbar = () => {
           {/* Updated logo - clickable to go home */}
           <Link to="/">
             <img 
-              src="/lovable-uploads/29984e37-3036-4b0d-82a2-e6e2bacb1954.png" 
-              alt="Sauna Logo" 
+              src="/lovable-uploads/muhib-khan-logo-m.png" 
+              alt="MK Logo" 
               className="h-24 w-24 object-contain hover:opacity-80 transition-opacity cursor-pointer"
             />
           </Link>
