@@ -11,10 +11,10 @@ const TestimonialsSection = () => {
             Success Stories
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-            What Our Owners Say
+            Client Testimonials
           </h2>
           <p className="text-lg text-white/80">
-            Hear from licensee owners and pro athletes who have experienced the REST RECOVERY difference.
+            Hear from clients and collaborators I've worked with.
           </p>
         </div>
 
@@ -51,18 +51,18 @@ const TestimonialsSection = () => {
 
 const testimonials = [
   {
-    quote: "Becoming a REST RECOVERY licensee changed my life and my community in Chandler. The support from the team was outstanding every step of the way.",
-    role: "Licensee Owner, Chandler, AZ",
+    quote: "Working with Muhib was amazing! His MERN stack expertise brought our vision to life with clean, scalable code.",
+    role: "Client, E-commerce Platform",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256"
   },
   {
-    quote: "The REST RECOVERY cold plunge has been a vital part of my training and recovery routine. The difference in my performance is undeniable.",
-    role: "Pro Athlete",
+    quote: "At just 15, Muhib has more skill than developers twice his age. His React applications are fast, beautiful, and maintainable.",
+    role: "Tech Lead, Startup",
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256"
   },
   {
-    quote: "As a REST RECOVERY licensee in Jackson, I've seen firsthand how powerful this business is for both owners and clients. It's truly rewarding.",
-    role: "Licensee Owner, Jackson, MS",
+    quote: "The full-stack solution Muhib delivered exceeded expectations. Professional, efficient, and creative—highly recommended!",
+    role: "Business Owner",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=256"
   }
 ];

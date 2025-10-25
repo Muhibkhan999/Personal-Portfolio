@@ -6,11 +6,11 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight animate-fade-in">
-            Pioneering the Future of Recovery Wellness
+            Building the Web, One Line at a Time
           </h2>
           <p className="text-xl text-white/80 leading-relaxed animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Since our founding, REST RECOVERY has been at the forefront of recovery science, 
-            helping thousands achieve optimal wellness through cutting-edge therapies and products.
+            Passionate MERN stack developer crafting scalable, modern web applications 
+            with cutting-edge technologies and clean architecture.
           </p>
         </div>
 
@@ -36,22 +36,22 @@ const AboutSection = () => {
             </h3>
             <div className="space-y-6 text-lg text-white/80 leading-relaxed">
               <p>
-                At Rest Recovery, we believe that true wellness begins with intentional restoration. 
-                Our boutique wellness facilities are designed to help you recover, heal, and optimize 
-                your body and mind using science-backed, high-performance therapies.
+                As a full-stack MERN developer, I believe that great applications start with solid 
+                architecture and clean code. My approach combines modern technologies with best 
+                practices to create scalable, maintainable solutions.
               </p>
               <p>
-                We combine the latest in recovery technology—like cold plunges, infrared saunas, 
-                hyperbaric chambers, float therapy, red light therapy, compression, PEMF, and salt 
-                rooms—into a seamless, rejuvenating experience.
+                I specialize in MongoDB for flexible data modeling, Express.js for robust APIs, 
+                React for dynamic user interfaces, and Node.js for efficient server-side logic—
+                bringing together the full MERN stack into seamless, high-performance applications.
               </p>
               <p>
-                Founded on the idea that recovery should be accessible, effective, and luxurious, 
-                each of our locations is built with care, outfitted with industry-leading equipment, 
-                and supported by knowledgeable staff who guide you through your wellness journey.
+                Every project I work on is built with attention to detail, optimized for performance, 
+                and designed with the end user in mind. From concept to deployment, I ensure quality 
+                at every step of the development process.
               </p>
               <p className="font-medium text-white italic">
-                Welcome to the future of feeling good.
+                Let's build something amazing together.
               </p>
             </div>
           </div>
@@ -59,9 +59,9 @@ const AboutSection = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-white/10 to-transparent rounded-2xl blur-lg"></div>
             <div className="relative rounded-2xl overflow-hidden border border-white/10">
               <img 
-                alt="REST RECOVERY Logo" 
+                alt="Muhammad Muhib Khan Logo" 
                 className="w-full h-auto transform hover:scale-105 transition-transform duration-700" 
-                src="/lovable-uploads/b75b628b-2cba-4748-8f80-792a5ae8ee1d.png" 
+                src="/lovable-uploads/muhib-khan-logo-m.png" 
               />
             </div>
           </div>

@@ -11,52 +11,60 @@ const ContactSection = () => {
               Get In Touch
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-rest-darkblue mb-6">
-              Ready to Join REST RECOVERY?
+              Let's Work Together!
             </h2>
             <p className="text-lg text-gray-600 mb-10">
-              Whether you're interested in licensee opportunities, our recovery products, 
-              or have questions about our wellness solutions, we're here to help.
+              Whether you're interested in collaborating on a project or have questions about 
+              my work, I'm here to help. Let's build something amazing together!
             </p>
             
             <div className="space-y-8">
 
-              {/* Visit Us */}
+              {/* Location */}
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-rest-blue/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                   <MapPin size={24} className="text-rest-blue" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
+                  <h3 className="font-semibold text-lg mb-2">Location</h3>
                   <p className="text-gray-600">
-                    610 N Alma School Rd<br />
-                    Chandler, Arizona 85286
+                    Available for remote work<br />
+                    and local projects
                   </p>
                 </div>
               </div>
 
-              {/* Email Us */}
+              {/* Email */}
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-rest-blue/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                   <Mail size={24} className="text-rest-blue" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-                  <p className="text-gray-600">
-                    info@restrecoverywellness.com
-                  </p>
+                  <h3 className="font-semibold text-lg mb-2">Email</h3>
+                  <a 
+                    href="mailto:muhibkhan2410@gmail.com"
+                    className="text-gray-600 hover:text-rest-blue transition-colors"
+                  >
+                    muhibkhan2410@gmail.com
+                  </a>
                 </div>
               </div>
 
-              {/* Follow Us */}
+              {/* Social */}
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-rest-blue/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                   <Instagram size={24} className="text-rest-blue" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">Follow Us</h3>
-                  <p className="text-gray-600">
-                    @restrecoverywellness (Instagram)
-                  </p>
+                  <h3 className="font-semibold text-lg mb-2">Follow</h3>
+                  <a 
+                    href="https://instagram.com/muhibkhan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-rest-blue transition-colors"
+                  >
+                    @muhibkhan (Instagram)
+                  </a>
                 </div>
               </div>
             </div>
@@ -67,7 +75,7 @@ const ContactSection = () => {
             <div className="bg-white rounded-lg shadow-lg p-4 overflow-auto">
               <iframe
                 id="JotFormIFrame-251135682357156"
-                title="Rest Recovery Contact"
+                title="Contact Form"
                 onLoad={() => window.parent.scrollTo(0,0)}
                 allowTransparency={true}
                 allow="geolocation; microphone; camera; fullscreen"

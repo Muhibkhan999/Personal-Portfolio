@@ -44,7 +44,7 @@ const PrivacyPolicy = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">4. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please contact us at privacy@restrecovery.com</p>
+            <p>If you have any questions about this Privacy Policy, please contact us at muhibkhan2410@gmail.com</p>
           </section>
         </div>
       </div>

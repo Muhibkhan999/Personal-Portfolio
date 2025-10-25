@@ -12,7 +12,7 @@ const Accessibility = () => {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Our Commitment</h2>
-            <p className="mb-4">REST RECOVERY is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards.</p>
+            <p className="mb-4">Muhammad Muhib Khan's portfolio is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards.</p>
           </section>
 
           <section className="mb-8">
