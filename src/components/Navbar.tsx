@@ -1,148 +1,9 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, Lock } from "lucide-react";
+import { Menu, X, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import OwnersOnlyDialog from "./OwnersOnlyDialog";
-
-// Locations data - organized by state
-const webLocations = [
-  // Arizona
-  {
-    city: "Buckeye",
-    state: "AZ",
-    website: "https://www.RestRecoveryBuckeye.com"
-  }, {
-    city: "Chandler",
-    state: "AZ",
-    website: "https://www.RestRecoveryChandler.com"
-  }, {
-    city: "Gilbert",
-    state: "AZ",
-    website: "https://www.RestRecoveryGilbert.com"
-  }, {
-    city: "North Phoenix",
-    state: "AZ",
-    website: "https://www.RestRecoveryNorthPhoenix.com"
-  },
-  // California
-  {
-    city: "Oceanside",
-    state: "CA",
-    website: "https://www.RestRecoverySandiego.com"
-  }, {
-    city: "Roseville",
-    state: "CA",
-    website: "https://www.RestRecoveryRoseville.com"
-  },
-  // Colorado
-  {
-    city: "Denver",
-    state: "CO",
-    website: "https://www.RestRecoveryDenver.com"
-  }, {
-    city: "Superior",
-    state: "CO",
-    website: "https://www.restrecoverysuperior.com"
-  },
-  // Florida
-  {
-    city: "Fort Walton",
-    state: "FL",
-    website: "https://www.RestRecoveryFortWalton.com"
-  },
-  // Idaho
-  {
-    city: "Meridian",
-    state: "ID",
-    website: "https://www.RestRecoveryMeridian.com"
-  },
-  // Illinois
-  {
-    city: "Naperville",
-    state: "IL",
-    website: "https://www.RestRecoveryNaperville.com"
-  },
-  // Massachusetts
-  {
-    city: "Groton",
-    state: "MA",
-    website: "https://www.RestRecoveryGroton.com"
-  },
-  // Mississippi
-  {
-    city: "Gluckstadt",
-    state: "MS",
-    website: "https://www.RestRecoveryGluckstadt.com"
-  }, {
-    city: "Jackson",
-    state: "MS",
-    website: "https://www.RestRecoveryJackson.com"
-  },
-  // New Jersey
-  {
-    city: "Wayne",
-    state: "NJ",
-    website: "https://www.WayneRestRecovery.com"
-  },
-  // Oregon
-  {
-    city: "Portland",
-    state: "OR",
-    website: "https://www.restrecoveryportland.com"
-  },
-  // Texas
-  {
-    city: "San Antonio",
-    state: "TX",
-    website: "https://www.RestRecoverySanAntonio.com"
-  },
-  // Louisiana
-  {
-    city: "Alexandria",
-    state: "LA",
-    website: "https://www.RestRecoveryAlexandria.com"
-  },
-  // South Carolina
-  {
-    city: "Fort Hill",
-    state: "SC",
-    website: "https://www.RestRecoveryFortHill.com"
-  },
-  // Tennessee
-  {
-    city: "Franklin",
-    state: "TN",
-    website: "https://www.RestRecoveryFranklin.com"
-  },
-  // Utah
-  {
-    city: "Bountiful",
-    state: "UT",
-    website: "https://www.RestRecoveryBountiful.com"
-  }, {
-    city: "Ephraim",
-    state: "UT",
-    website: "https://www.RestRecoveryEphraim.com"
-  }, {
-    city: "Logan",
-    state: "UT",
-    website: "https://www.RestRecoveryLogan.com"
-  },
-  // Virginia
-  {
-    city: "Ashburn",
-    state: "VA",
-    website: "https://www.restrecoveryvirginia.com"
-  }
-];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -172,11 +33,11 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         <div className="flex items-center space-x-3">
           {/* Updated logo - clickable to go home */}
-          <Link to="/">
+          <Link to="/" className="group">
             <img 
               src="/lovable-uploads/muhib-khan-logo-m.png" 
               alt="MK Logo" 
-              className="h-24 w-24 object-contain hover:opacity-80 transition-opacity cursor-pointer"
+              className="h-16 w-16 object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-125 filter drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]"
             />
           </Link>
         </div>
@@ -193,42 +54,7 @@ const Navbar = () => {
             Projects
           </Link>
           
-          {/* Locations Dropdown */}
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white/80 hover:text-white font-medium h-auto p-0 data-[state=open]:bg-transparent">
-                  Locations
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid grid-cols-2 gap-1 p-4 w-96 bg-black/95 backdrop-blur-lg border border-white/10">
-                    {webLocations.map((location, idx) => (
-                      <a
-                        key={idx}
-                        href={location.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-colors"
-                      >
-                        {location.city}, {location.state}
-                      </a>
-                    ))}
-                    <div className="block px-3 py-2 text-sm text-white/60 rounded">
-                      North Carolina - Coming 2026
-                    </div>
-                    <div className="block px-3 py-2 text-sm text-white/60 rounded">
-                      New York - Coming 2026
-                    </div>
-                    <div className="block px-3 py-2 text-sm text-white/60 rounded">
-                      Maryland - Coming 2026
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-          
-          <button 
+          <button
             onClick={() => setIsOwnersDialogOpen(true)}
             className="font-medium text-white/80 hover:text-white transition-colors flex items-center gap-2"
           >
@@ -280,33 +106,7 @@ const Navbar = () => {
             >
               Projects
             </Link>
-            {/* Mobile Locations */}
-            <div className="bg-white/5 rounded-lg px-4 py-3">
-              <p className="font-medium text-white/90 text-lg mb-2">Locations</p>
-              <div className="grid grid-cols-1 gap-1 max-h-48 overflow-y-auto">
-                {webLocations.map((location, idx) => (
-                  <a
-                    key={idx}
-                    href={location.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-2 py-1 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded transition-colors"
-                  >
-                    {location.city}, {location.state}
-                  </a>
-                ))}
-                <div className="block px-2 py-1 text-sm text-white/60 rounded">
-                  North Carolina - Coming 2026
-                </div>
-                <div className="block px-2 py-1 text-sm text-white/60 rounded">
-                  New York - Coming 2026
-                </div>
-                <div className="block px-2 py-1 text-sm text-white/60 rounded">
-                  Maryland - Coming 2026
-                </div>
-              </div>
-            </div>
-            <button 
+            <button
               onClick={() => setIsOwnersDialogOpen(true)}
               className="font-medium text-white/90 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg px-4 py-3 transition-colors text-lg flex items-center gap-2 w-full"
             >
