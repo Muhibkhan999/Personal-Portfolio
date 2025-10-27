@@ -68,11 +68,47 @@
  
     --radius: 0.5rem;
   }
+
+  .reading {
+    --background: 245 245 220; /* Warm beige */
+    --foreground: 0 0% 0%;
+
+    --muted: 240 240 200;
+    --muted-foreground: 0 0% 40%;
+
+    --popover: 245 245 220;
+    --popover-foreground: 0 0% 0%;
+
+    --card: 245 245 220;
+    --card-foreground: 0 0% 0%;
+
+    --border: 220 220 180;
+    --input: 220 220 180;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 245 245 220;
+
+    --secondary: 240 240 200;
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 240 240 200;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 245 245 220;
+
+    --ring: 220 220 180;
+  }
 }
  
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-padding-top: 80px;
+    scroll-behavior: auto;
   }
   
   html.lenis {
@@ -97,12 +133,22 @@
   
   body {
     @apply bg-background text-foreground;
-    cursor: none;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-image: radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 0.5) 0px, transparent 50%),
+                      radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.5) 0px, transparent 50%),
+                      radial-gradient(at 0% 50%, hsla(355, 100%, 97%, 0.5) 0px, transparent 50%),
+                      radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 0.5) 0px, transparent 50%),
+                      radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.5) 0px, transparent 50%),
+                      radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 0.5) 0px, transparent 50%),
+                      radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 0.5) 0px, transparent 50%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  ::selection {
+    background-color: rgba(234, 179, 8, 0.25);
+    color: inherit;
   }
   
-  body * {
-    cursor: none !important;
-  }
 }
 
 /* Custom scrollbar hiding */
@@ -115,16 +161,99 @@
   display: none; /* Chrome, Safari and Opera */
 }
 
-@layer utilities {
-  .hover-scale {
-    @apply transition-transform duration-200 hover:scale-105;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 193, 7, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(255, 193, 7, 0.8); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.glassmorphism {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glassmorphism {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes multicolorText {
+  0% { color: #22c55e; }      /* green-500 */
+  25% { color: #10b981; }     /* emerald-500 */
+  50% { color: #84cc16; }     /* lime-500 */
+  75% { color: #14b8a6; }     /* teal-500 */
+  100% { color: #22c55e; }
+}
+
+@keyframes multicolorBg {
+  0% { background-color: #22c55e; }
+  25% { background-color: #10b981; }
+  50% { background-color: #84cc16; }
+  75% { background-color: #14b8a6; }
+  100% { background-color: #22c55e; }
+}
+
+@keyframes multicolorBorder {
+  0% { border-color: #22c55e; }
+  25% { border-color: #10b981; }
+  50% { border-color: #84cc16; }
+  75% { border-color: #14b8a6; }
+  100% { border-color: #22c55e; }
+}
+
+/* Global multicolor on hover for clickables, respects reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  /* Links: cycle text color on hover */
+  a[href]:hover {
+    animation: multicolorText 1.2s linear infinite;
   }
-  
-  .delay-300 {
-    animation-delay: 0.3s;
+
+  /* Buttons and button-like roles: cycle background on hover */
+  button:hover,
+  [role="button"]:hover,
+  .btn:hover,
+  .button:hover {
+    animation: multicolorBg 1.2s linear infinite;
   }
-  
-  .delay-1000 {
-    animation-delay: 1s;
+
+  /* Any element with a border class: cycle border color on hover */
+  .border:hover,
+  [class*="border-"]:hover {
+    animation: multicolorBorder 1.2s linear infinite;
   }
+}
+
+/* Opt-out utility */
+.no-multicolor:hover { animation: none !important; }
+
+/* Force green link utility across all interaction states */
+.link-green,
+.link-green:hover,
+.link-green:focus,
+.link-green:active,
+.link-green:visited {
+  color: #22c55e !important; /* Tailwind green-500 */
+  transition: color 150ms ease-in-out;
 }

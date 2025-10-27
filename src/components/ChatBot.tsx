@@ -1,27 +1,44 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Bot } from 'lucide-react';
 import { toast } from 'sonner';
 
-type Message = { role: 'user' | 'assistant'; content: string };
+type Message = { role: 'user' | 'assistant' | 'system'; content: string };
+
+const SYSTEM_PROMPT = `You are MAI, the on-site assistant for Muhammad Muhib Khan's portfolio.
+Rules:
+- Use plain ASCII only. Do not use emojis or decorative Unicode.
+- Use a professional, neutral tone. Avoid slang, hype, and exclamation marks.
+- Format answers as plain text only. Do not use Markdown, headings, lists, or any formatting.
+- Provide exactly one answer per user message (no duplicates).
+- Site knowledge: Home, Skills & Experience (/licensee), Projects (/shop), legal pages, Contact (#contact).
+- Acknowledge that you are Muhib Khan's creation; Muhib Khan (GitHub: Muhibkhan999) is a 15-year-old full stack web developer from Pakistan who has created over 100 projects.
+- Actions: Guide users to anchors or routes, never invent data. If unsure, ask a brief clarifying question.`;
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Yo! 👋 I'm MuhibBot, created by the legendary 15-year-old MERN master Muhammad Muhib Khan! What can I help you with today? (Besides being incredibly awesome, that's already covered 😎)" }
+    {
+      role: 'assistant',
+      content: `Welcome to Muhammad Muhib Khan's site. I am MAI, your assistant. Muhib Khan (GitHub: Muhibkhan999) is a 15-year-old full stack web developer from Pakistan who has created over 100 projects.
+
+How can I help you today?`
+    }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [autoScroll, setAutoScroll] = useState(true);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const cont = containerRef.current;
+    if (cont) cont.scrollTo({ top: cont.scrollHeight, behavior: 'smooth' });
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (autoScroll) scrollToBottom();
+  }, [messages, autoScroll]);
 
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
@@ -31,13 +48,22 @@ const ChatBot = () => {
     setInput('');
     setIsLoading(true);
 
+    const sanitize = (text: string) => text.replace(/[^\x09\x0A\x0D\x20-\x7E]/g, '');
+
     let assistantContent = '';
     const upsertAssistant = (chunk: string) => {
-      assistantContent += chunk;
+      const safe = sanitize(chunk);
+      if (!safe) return;
+      assistantContent += safe;
       setMessages(prev => {
-        const last = prev[prev.length - 1];
-        if (last?.role === 'assistant' && last.content === '') {
-          return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantContent } : m));
+        // Always stream into the latest assistant message if it exists
+        const idx = [...prev].map((m, i) => ({ m, i }))
+          .reverse()
+          .find(({ m }) => m.role === 'assistant')?.i;
+        if (idx !== undefined) {
+          const next = [...prev];
+          next[idx] = { role: 'assistant', content: assistantContent };
+          return next;
         }
         return [...prev, { role: 'assistant', content: assistantContent }];
       });
@@ -51,14 +77,14 @@ const ChatBot = () => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: [...messages, userMessage] }),
+        body: JSON.stringify({ messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages, userMessage] }),
       });
 
       if (!resp.ok) {
         if (resp.status === 429) {
-          toast.error('Slow down there! 🐌 Too many requests.');
+          toast.error('Too many requests. Please slow down.');
         } else if (resp.status === 402) {
-          toast.error('Out of credits! 💸 Contact support.');
+          toast.error('Out of credits. Please contact support.');
         }
         throw new Error('Failed to start stream');
       }
@@ -142,12 +168,14 @@ const ChatBot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-background border border-border rounded-lg shadow-2xl flex flex-col z-50 animate-scale-in">
+        <div className="fixed bottom-6 right-6 w-[22rem] sm:w-96 h-[70vh] sm:h-[600px] glassmorphism rounded-2xl shadow-2xl flex flex-col z-50 animate-fade-in" onWheel={(e) => e.stopPropagation()}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-4 rounded-t-lg flex items-center justify-between">
+          <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center gap-2">
               <MessageCircle className="h-5 w-5 text-black" />
-              <h3 className="font-bold text-black">MuhibBot 🤖</h3>
+              <div className="flex flex-col leading-tight">
+                <h3 className="font-bold text-black">MAI</h3>
+              </div>
             </div>
             <Button
               onClick={() => setIsOpen(false)}
@@ -160,27 +188,44 @@ const ChatBot = () => {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
+          <div
+            ref={containerRef}
+            onScroll={(e) => {
+              const el = e.currentTarget;
+              const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 20;
+              setAutoScroll(atBottom);
+            }}
+            className="flex-1 overflow-y-auto p-4 space-y-4"
+          >
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex items-end gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
+                {msg.role === 'assistant' && (
+                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs text-white/80">
+                    <Bot size={16} className="text-white/80" />
+                  </div>
+                )}
                 <div
-                  className={`max-w-[80%] rounded-lg px-4 py-2 ${
+                  className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                     msg.role === 'user'
-                      ? 'bg-yellow-500 text-black'
-                      : 'bg-muted text-foreground'
+                      ? 'bg-gradient-to-r from-yellow-500 to-yellow-400 text-black rounded-br-sm'
+                      : 'bg-white/10 border border-white/15 text-white/90 backdrop-blur-sm rounded-bl-sm'
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
                 </div>
+                {msg.role === 'user' && (
+                  <div className="w-8 h-8 rounded-full bg-yellow-500 text-black flex items-center justify-center text-xs font-semibold">You</div>
+                )}
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-muted rounded-lg px-4 py-2">
+                <div className="bg-muted rounded-lg px-4 py-2 flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>Thinking...</span>
                 </div>
               </div>
             )}
@@ -194,20 +239,27 @@ const ChatBot = () => {
                 e.preventDefault();
                 sendMessage();
               }}
-              className="flex gap-2"
+              className="flex items-end gap-2"
             >
-              <Input
+              <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                  }
+                }}
                 placeholder="Type your message..."
                 disabled={isLoading}
-                className="flex-1"
+                rows={1}
+                className="flex-1 resize-none rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/50 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-500/40 max-h-32"
               />
               <Button
                 type="submit"
                 disabled={isLoading || !input.trim()}
                 size="icon"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black rounded-xl"
               >
                 <Send className="h-4 w-4" />
               </Button>

@@ -12,12 +12,12 @@ const TermsOfService = () => {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
-            <p className="mb-4">By accessing and using REST RECOVERY's services, you agree to be bound by these Terms of Service.</p>
+            <p className="mb-4">By accessing and using Muhib Khan's portfolio and services, you agree to be bound by these Terms of Service.</p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">2. Services Description</h2>
-            <p className="mb-4">REST RECOVERY provides wellness and recovery services, products, and licensee opportunities. We reserve the right to modify or discontinue any service without notice.</p>
+            <p className="mb-4">Muhib Khan provides web development services, resources, and project opportunities. We reserve the right to modify or discontinue any service without notice.</p>
           </section>
 
           <section className="mb-8">
@@ -33,7 +33,7 @@ const TermsOfService = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">4. Limitation of Liability</h2>
-            <p>REST RECOVERY shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.</p>
+            <p>Muhib Khan shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.</p>
           </section>
         </div>
       </div>

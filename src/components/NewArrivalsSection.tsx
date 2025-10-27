@@ -7,24 +7,26 @@ const NewArrivalsSection = () => {
     <section className="py-12 md:py-20 lg:py-24 bg-gradient-to-b from-black to-zinc-900">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <span className="inline-block px-4 py-2 bg-white/10 text-white rounded-full font-medium mb-6">
-            New Arrivals
+          <span className="inline-block px-4 py-2 bg-yellow-500/20 text-yellow-300 rounded-full font-medium mb-6 border border-yellow-500/30 backdrop-blur-sm">
+            Featured Projects
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 tracking-tight leading-tight">
-            Latest Recovery
+            Recent Work
             <span className="block bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
-              Innovations
+              Highlights
             </span>
           </h2>
           <p className="text-xl text-white/70 leading-relaxed">
-            Discover our newest professional-grade recovery equipment designed for 
-            elite performance and unparalleled wellness experiences.
+            A snapshot of recent client projects and product builds with a focus on clean UX, performance, and maintainable MERN architecture. 
+            Explore the case studies below.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {newArrivals.map((product, index) => (
-            <ProductCard key={index} product={product} index={index} />
+            <div key={index} className={index === 0 ? 'lg:col-span-2' : ''}>
+              <ProductCard product={product} index={index} />
+            </div>
           ))}
         </div>
 
@@ -47,11 +49,12 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
       className="group bg-gradient-to-br from-zinc-900/50 to-black/50 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-md transform hover:-translate-y-4 transition-all duration-500 hover:border-white/20 hover:shadow-2xl"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="aspect-[4/3] overflow-hidden relative">
+      <div className={`overflow-hidden relative ${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
         <img 
           src={product.image}
           alt={product.name}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
         <div className="absolute top-4 left-4 z-20">
@@ -87,21 +90,21 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
 
 const newArrivals = [
   {
-    name: "K2 Contrast Hot/Cold Plunge",
-    description: "Luxury dual-zone hydrotherapy system featuring both hot tub and cold plunge in one elegant unit. Advanced LED lighting, premium materials, and precise temperature control.",
-    image: "/lovable-uploads/53a979fd-0494-4fb3-9569-612c85f5d66f.png",
+    name: "E‑commerce Dashboard (MERN)",
+    description: "A scalable admin dashboard with role-based access, charts, and lightning-fast product/catalog management. Shipped with React Query caching and optimistic updates.",
+    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop",
     icon: <Thermometer className="w-5 h-5 text-white" />
   },
   {
-    name: "The AirVault (2.0 Hyperbaric Chamber)",
-    description: "Wheelchair-accessible hyperbaric chamber room with full 2.0 ATA capabilities. Features built-in mini split, comfortable seating, and spacious design.",
-    image: "/lovable-uploads/50cfb7d6-f74f-49fc-abbf-6f9008906631.png",
+    name: "SaaS Analytics Platform",
+    description: "Multi-tenant analytics with team workspaces, usage-based billing, and shareable dashboards. Built for performance and clarity.",
+    image: "https://images.unsplash.com/photo-1551281044-8d8d0a6c5f57?q=80&w=1600&auto=format&fit=crop",
     icon: <Cylinder className="w-5 h-5 text-white" />
   },
   {
-    name: "HydroChill",
-    description: "Revolutionary dry float technology that delivers the benefits of float therapy or cold plunge without getting wet. Innovative recovery and rejuvenation system.",
-    image: "/lovable-uploads/2316cae8-0672-4529-962b-5d4ba13e7e29.png", 
+    name: "Portfolio CMS + Blog",
+    description: "A fast MDX/Headless CMS blog with full-text search, tag filters, and SEO-friendly routes. Built to be easily maintainable.",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1600&auto=format&fit=crop",
     icon: <Bath className="w-5 h-5 text-white" />
   }
 ];

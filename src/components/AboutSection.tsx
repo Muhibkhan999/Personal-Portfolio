@@ -73,20 +73,20 @@ const AboutSection = () => {
 
 const features = [{
   icon: Medal,
-  title: "Premium Quality",
-  description: "Industry-leading recovery equipment and protocols backed by science."
+  title: "Premium Code",
+  description: "Industry-leading development practices and protocols backed by best practices."
 }, {
   icon: Users,
-  title: "Expert Support",
-  description: "Dedicated team of wellness professionals to guide your journey."
+  title: "Expert Guidance",
+  description: "Dedicated team of development professionals to guide your projects."
 }, {
   icon: Heart,
-  title: "Holistic Approach",
-  description: "Comprehensive recovery solutions addressing mind and body."
+  title: "Full-Stack Approach",
+  description: "Comprehensive development solutions addressing frontend and backend."
 }, {
   icon: Clock,
-  title: "Efficient Results",
-  description: "Accelerate recovery and optimize performance in less time."
+  title: "Efficient Solutions",
+  description: "Accelerate development and optimize performance in less time."
 }];
 
 export default AboutSection;
